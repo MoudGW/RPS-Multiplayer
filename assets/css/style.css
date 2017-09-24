@@ -1,0 +1,74 @@
+body{
+        text-align: center;
+            font-size: 20px;
+}
+#ground >div{
+    border-radius: 11px;
+    padding: 10px;
+    border: solid 1px;
+    min-height: 200px;
+    min-width: 150px;
+    margin: 20px 10px;
+    text-align: center;
+}
+#ground{
+    display: inline-flex;}
+#head{
+        font-size: 70px;
+    padding: 10px;
+} 
+input{
+        width: 200px;
+    height: 20px;
+    font-size: 20px;
+}
+button{
+    padding-top: 6px;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+}
+textarea{
+        width: 500px;
+    height: 100px;
+}
+body >div{
+    margin-bottom: 10px;
+}
+#bottom >div{
+    margin-top: 10px;
+}
+img{
+    width: 40px;
+    height: 40px;
+        margin-left: 10px;
+}
+#paper{
+    width: 80px;
+    height: 40px; 
+}
+#rock{
+    margin-left: 95px;
+}
+#img{
+    display: grid;
+    border: none;
+    margin-top: 30px;
+}
+.blueclass{
+border-color: blue !important;
+}
+#text{
+    height: auto;
+    border: solid 1px;
+    min-height: 100px;
+    width: 600px;
+    align-items: center;
+    margin-left: 280px;
+    border-radius: 10px;
+ 
+}
+#text >*{
+    margin-top: 10px;
+}
+}
