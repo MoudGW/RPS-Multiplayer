@@ -1,5 +1,5 @@
 body{
-        text-align: center;
+            text-align: -webkit-center;
             font-size: 20px;
 }
 #ground >div{
@@ -10,6 +10,9 @@ body{
     min-width: 150px;
     margin: 20px 10px;
     text-align: center;
+}
+#pl1, #pl2{
+        min-height: inherit;
 }
 #ground{
     display: inline-flex;}
@@ -58,17 +61,39 @@ img{
 .blueclass{
 border-color: blue !important;
 }
-#text{
+#bottom{
     height: auto;
     border: solid 1px;
     min-height: 100px;
     width: 600px;
     align-items: center;
-    margin-left: 280px;
     border-radius: 10px;
  
 }
-#text >*{
-    margin-top: 10px;
+#messages{
+    min-height: inherit;
+        display: grid;
 }
+#text {
+    margin: 10px;
+}
+#messages >div>p{
+    color: white;
+    font-size: 12px;
+    width: fit-content;
+    margin: auto;
+    padding: 5px;
+    border-radius: 10px;
+}
+.classpl2{
+      background-color:#FF4136 !important;
+      float: left !important;
+}
+.classpl1{
+       background-color: #2ECC40 !important;
+      float: right !important;
+}
+button{
+        background: #0074D9;
+    border: none;
 }
