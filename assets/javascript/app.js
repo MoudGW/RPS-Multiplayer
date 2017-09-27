@@ -5,17 +5,16 @@ session storage
  **************************************/
  var playnumber;
  //define the structure of the object player 
+
+$( document ).ready(function() {
  var players={
   choose:0,
   wins:0,
   losses:0,
   playername:''
 };
-$( document ).ready(function() {
-  var choice1=0;
-  var choise2=0;
-  var player2=players;
-  var player1=players;
+var player1;
+var player2;
   //firebase************************************************
 //init the therm of connectifity to firebase
 var config = {
@@ -81,7 +80,7 @@ var config = {
     // add a listner on the whole data 
     	ref.on("value", function(snapshot) {
         // if we player1 is in the data execute this code to allow a second player to join the game
-            if (snapshot.hasChild('player1' && (sessionStorage.getItem(player2))==null) ) {
+            if (snapshot.hasChild('player1') && (sessionStorage.getItem(player2))==null){
               $('#players').html("<input type='text' name='player' placeholder='name'><button id='Start2'>Start</button>");
               $('#pl1').html(snapshot.val().player1.playername);
               $('#Start2').click(function(event){
@@ -151,6 +150,7 @@ var config = {
      ref.child("player1").update(
         {       choose:0,
             wins:player1.wins+1});
+
      ref.child("player2").update(
         {       choose:0,
             losses:player2.losses+1});
@@ -177,19 +177,19 @@ var config = {
 function choose(){
   // this will be listening if one of the players leave the game so it will allow another player to join it
     ref.on('child_removed', function(snapshot){
-        if (snapshot.hasChild('player1') ){
+      console.log(snapshot.val());
+        if ( JSON.stringify(snapshot.val())=== JSON.stringify(player1)){
             sessionStorage.setItem('player', 'player1'); 
             database.ref('/player1').set(player2);
             $('#player2').html('Waiting for player2');
             $('#players').html('welcome '+ players.playername);
             Start();
         }
-          if (snapshot.hasChild('player2') ){
+          if ( JSON.stringify(snapshot.val())=== JSON.stringify(player2)){
             $('#player2').html('Waiting for player2');
             $('#players').html('welcome '+ players.playername);
             Start();
-        }
-    }   
+        }   
     });
     // call function chat so to players can chat 
     chating();
@@ -221,7 +221,6 @@ function choose(){
         {    
            $('#player2').off(); 
             // this indicate which player have to play 
-               $('#result').html(eval(snapshot.val()).playername+" turn to play");
                $('#player1').addClass('blueclass');
                $('#player2').removeClass('blueclass');
                $('#img').remove();
@@ -243,7 +242,6 @@ function choose(){
             if(snapshot.val()=='player2')
             {  
                $('#player1').off();
-                 $('#result').html(eval(snapshot.val()).playername+" turn to play");
                  $('#player2').addClass('blueclass');
                  $('#player1').removeClass('blueclass');    
                  $('#img').remove();
